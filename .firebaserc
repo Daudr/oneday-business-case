@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "oneday-business-case": {
+      "hosting": {
+        "oneday-business-case": [
+          "oneday-business-case"
+        ]
+      }
+    }
+  }
+}

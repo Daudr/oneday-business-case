@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "oneday-business-case",
+      "public": "dist/oneday-business-case",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}
