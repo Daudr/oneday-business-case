@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { User } from '../models';
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { User } from '@models';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +12,7 @@ export class UsersService {
   constructor(private http: HttpClient) {}
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.baseUrl}/users`).pipe(tap(console.log));
+    return this.http.get<User[]>(`${this.baseUrl}/users`);
   }
 
   getUser(userID: string): Observable<User> {
@@ -26,5 +25,9 @@ export class UsersService {
 
   deleteUser(userID: string) {
     return this.http.delete(`${this.baseUrl}/users/${userID}`);
+  }
+
+  autocomplete(filter: string): Observable<User[]> {
+    return this.http.get<User[]>(`${this.baseUrl}/users/autocomplete/${filter}`);
   }
 }
