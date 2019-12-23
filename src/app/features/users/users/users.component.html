@@ -1,0 +1,16 @@
+<div fxLayout="row wrap" fxLayoutAlign="space-between center">
+  <app-users-autocomplete
+    [users]="filteredUsers$ | async"
+    (userChange)="filterUsers($event)"
+  ></app-users-autocomplete>
+
+  <button mat-raised-button color="primary" (click)="goToUserDetail()">Aggiungi utente</button>
+</div>
+<div fxLayout="row" fxLayoutAlign="center">
+  <app-users-table
+    fxFlexFill
+    [users]="users$ | async"
+    [columnsToDisplay]="columnsToDisplay"
+    (modifyUserClick)="goToUserDetail($event)"
+  ></app-users-table>
+</div>
