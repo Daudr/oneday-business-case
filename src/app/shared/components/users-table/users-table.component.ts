@@ -11,9 +11,9 @@ export class UsersTableComponent {
   @Input() users: User[];
   @Input() columnsToDisplay: string[];
 
-  @Output() addUserClick = new EventEmitter<void>();
+  @Output() modifyUserClick = new EventEmitter<string | void>();
 
-  public onAddUserClick() {
-    this.addUserClick.emit();
+  public onModifyUserClick(userID: string) {
+    this.modifyUserClick.emit(userID);
   }
 }
