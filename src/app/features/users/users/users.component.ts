@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { UsersService } from '../../../shared/services/users.service';
-import { User } from '../../../shared/models';
+import { UsersService } from '@services/users.service';
+import { User } from '@models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -9,14 +10,27 @@ import { User } from '../../../shared/models';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-  columsToDisplay: string[] = ['name', 'surname', 'birthDate', 'email'];
+  allColumns = ['name', 'surname', 'birthDate', 'email', 'modify'];
+  columnsToDisplay: string[] = this.allColumns;
   users$: Observable<User[]>;
-  users = [{ name: 'Michele', surname: 'Da Rin', birthDate: '1997-02-16', email: 'michidarin@gmail.com' }];
+  filteredUsers$: Observable<User[]>;
 
-  constructor(private usersService: UsersService) { }
+  constructor(private router: Router, private usersService: UsersService) { }
 
   ngOnInit() {
     this.users$ = this.usersService.getUsers();
   }
 
+  filterUsers(filter: string) {
+    console.log(`[UsersComponent] Filter: ${filter}`);
+    this.filteredUsers$ = this.usersService.autocomplete(filter);
+  }
+
+  goToUserDetail(userID: string | null) {
+    if (!userID) {
+      userID = `new`;
+    }
+
+    this.router.navigate(['/users', userID]);
+  }
 }
