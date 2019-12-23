@@ -1,5 +1,5 @@
 <form
-  class="user__form"
+  class="user-form"
   [formGroup]="form"
   (submit)="onSaveUser()"
 >
@@ -24,5 +24,8 @@
     <mat-error *ngIf="email.invalid && email.value">Email non valida</mat-error>
   </mat-form-field>
 
-  <button mat-raised-button color="primary" type="submit">Salva</button>
+  <div class="user-form__actions" fxLayout="row" fxLayoutAlign="space-between">
+    <button mat-raised-button color="primary" type="submit">Salva</button>
+    <button mat-raised-button color="warn" type="reset">Cancella campi</button>
+  </div>
 </form>

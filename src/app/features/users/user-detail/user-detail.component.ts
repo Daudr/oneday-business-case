@@ -16,11 +16,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   public user$: Observable<User>;
   private destroyed$ = new Subject<boolean>();
 
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    private usersService: UsersService,
-  ) {}
+  constructor(private router: Router, private route: ActivatedRoute, private usersService: UsersService) {}
 
   ngOnInit() {
     if (this.route.snapshot.params.id !== `new`) {
@@ -31,7 +27,17 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   }
 
   onSave(user: User) {
-    this.usersService.saveUser(user).pipe(takeUntil(this.destroyed$), tap(_ => this.router.navigate([`..`]))).subscribe();
+    this.usersService
+      .saveUser(user)
+      .pipe(
+        takeUntil(this.destroyed$),
+        tap(_ => this.router.navigate([`..`])),
+      )
+      .subscribe();
+  }
+
+  goBack() {
+    this.router.navigate([`..`]);
   }
 
   ngOnDestroy(): void {
