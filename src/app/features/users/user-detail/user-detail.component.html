@@ -1,1 +1,8 @@
-<p>user-detail works!</p>
+<div fxLayout="row" fxLayoutAlign="space-between">
+  <h3>Dettagli utente</h3>
+  <button mat-raised-button color="accent" (click)="goBack()">Torna alla lista</button>
+</div>
+
+<div fxLayout="row wrap" fxLayoutAlign="space-between center">
+  <app-user-form fxFlexFill [user]="user$ | async" (save)="onSave($event)"></app-user-form>
+</div>

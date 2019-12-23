@@ -26,7 +26,7 @@ export class UsersComponent implements OnInit {
     this.filteredUsers$ = this.usersService.autocomplete(filter);
   }
 
-  goToUserDetail(userID: string | null) {
+  goToUserDetail(userID = null) {
     if (!userID) {
       userID = `new`;
     }
