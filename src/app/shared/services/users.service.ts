@@ -16,7 +16,7 @@ export class UsersService {
   }
 
   getUser(userID: string): Observable<User> {
-    return this.http.get<User>(`${this.baseUrl}/users/${userID}`);
+    return this.http.get<User>(`${this.baseUrl}/users?id=${userID}`);
   }
 
   saveUser(user: User) {
