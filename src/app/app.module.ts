@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './shared/modules/material/material.module';
 import { HttpClientModule } from '@angular/common/http';
-import { UsersService } from './shared/services/users.service';
-import { SharedModule } from './shared/modules/shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UsersService } from '@services/users.service';
+import { SharedModule } from '@modules/shared/shared.module';
 
 @NgModule({
   declarations: [
