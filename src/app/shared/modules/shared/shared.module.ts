@@ -4,22 +4,18 @@ import { UsersTableComponent } from '@components/users-table/users-table.compone
 import { MaterialModule } from '@modules/material/material.module';
 import { UsersAutocompleteComponent } from '@components/users-autocomplete/users-autocomplete.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FlexLayoutModule } from "@angular/flex-layout";
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { UserFormComponent } from '@components/user-form/user-form.component';
 
 @NgModule({
-  declarations: [UsersTableComponent, UsersAutocompleteComponent],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    FormsModule,
-    ReactiveFormsModule,
-    FlexLayoutModule
-  ],
+  declarations: [UsersTableComponent, UsersAutocompleteComponent, UserFormComponent],
+  imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule, FlexLayoutModule],
   exports: [
     MaterialModule,
     FlexLayoutModule,
     UsersTableComponent,
-    UsersAutocompleteComponent
-  ]
+    UsersAutocompleteComponent,
+    UserFormComponent,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}
