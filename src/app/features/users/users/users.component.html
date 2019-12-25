@@ -4,6 +4,7 @@
   <app-users-autocomplete
     [users]="filteredUsers$ | async"
     (userChange)="filterUsers($event)"
+    (selectUser)="goToUserDetail($event.id)"
   ></app-users-autocomplete>
 
   <button mat-raised-button color="primary" (click)="goToUserDetail()">Aggiungi utente</button>

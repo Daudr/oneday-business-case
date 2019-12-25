@@ -12,17 +12,21 @@ import { Subject } from 'rxjs';
 export class UsersAutocompleteComponent implements OnInit, OnDestroy {
   @Input() users: User[];
   @Output() userChange = new EventEmitter<string>();
+  @Output() selectUser = new EventEmitter<User>();
 
   userControl = new FormControl();
   private destroyed$ = new Subject<boolean>();
 
   ngOnInit() {
     this.userControl.valueChanges.pipe(
-      // delay(2000),
-      tap(this.userChange.emit),
-      tap(console.log),
+      delay(2000),
+      tap(value => this.userChange.emit(value)),
       takeUntil(this.destroyed$)
-    ).subscribe(value => console.log(value));
+    ).subscribe();
+  }
+
+  onUserSelect(user: User) {
+    this.selectUser.emit(user);
   }
 
   ngOnDestroy(): void {

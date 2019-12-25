@@ -22,7 +22,6 @@ export class UsersComponent implements OnInit {
   }
 
   filterUsers(filter: string) {
-    console.log(`[UsersComponent] Filter: ${filter}`);
     this.filteredUsers$ = this.usersService.autocomplete(filter);
   }
 
