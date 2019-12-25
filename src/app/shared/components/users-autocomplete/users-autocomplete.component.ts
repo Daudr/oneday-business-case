@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { User } from '@models';
-import { delay, tap, takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { tap, takeUntil, debounce } from 'rxjs/operators';
+import { Subject, interval } from 'rxjs';
 
 @Component({
   selector: 'app-users-autocomplete',
@@ -19,7 +19,7 @@ export class UsersAutocompleteComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.userControl.valueChanges.pipe(
-      delay(2000),
+      debounce(() => interval(1000)),
       tap(value => this.userChange.emit(value)),
       takeUntil(this.destroyed$)
     ).subscribe();
