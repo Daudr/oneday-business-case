@@ -13,7 +13,8 @@
 <div fxLayout="row" fxLayoutAlign="center">
   <app-users-table
     fxFlexFill
-    [users]="users$ | async"
+    [users]="(usersResponse$ | async)?.users"
+    [pagination]="(usersResponse$ | async)?.pagination"
     [columnsToDisplay]="columnsToDisplay"
     (modifyUserClick)="goToUserDetail($event)"
   ></app-users-table>

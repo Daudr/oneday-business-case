@@ -1,5 +1,5 @@
 import { Component, Input, EventEmitter, Output, ChangeDetectionStrategy } from '@angular/core';
-import { User } from '../../models';
+import { User, Pagination } from '@models';
 
 @Component({
   selector: 'app-users-table',
@@ -9,6 +9,7 @@ import { User } from '../../models';
 })
 export class UsersTableComponent {
   @Input() users: User[];
+  @Input() pagination: Pagination;
   @Input() columnsToDisplay: string[];
 
   @Output() modifyUserClick = new EventEmitter<string | void>();

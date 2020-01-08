@@ -1,31 +1,29 @@
-<form
-  class="user-form"
-  [formGroup]="form"
-  (submit)="onSaveUser()"
->
-  <mat-form-field fxFlexFill>
-    <input matInput placeholder="Nome" formControlName="name" required/>
-    <mat-error *ngIf="name.invalid">Il nome è obbligatorio</mat-error>
-  </mat-form-field>
+<form class="user-form" [formGroup]="form" (submit)="onSaveUser()">
+  <mat-card>
+    <mat-form-field fxFlexFill>
+      <input matInput placeholder="Nome" formControlName="name" required />
+      <mat-error *ngIf="name.invalid">Il nome è obbligatorio</mat-error>
+    </mat-form-field>
 
-  <mat-form-field fxFlexFill>
-    <input matInput placeholder="Cognome" formControlName="surname" required/>
-    <mat-error *ngIf="surname.invalid">Il cognome è obbligatorio</mat-error>
-  </mat-form-field>
+    <mat-form-field fxFlexFill>
+      <input matInput placeholder="Cognome" formControlName="surname" required />
+      <mat-error *ngIf="surname.invalid">Il cognome è obbligatorio</mat-error>
+    </mat-form-field>
 
-  <mat-form-field fxFlexFill>
-    <input type="date" matInput placeholder="birthDate" formControlName="birthDate" required/>
-    <mat-error *ngIf="birthDate.invalid">La data di nascita è obbligatoria</mat-error>
-  </mat-form-field>
+    <mat-form-field fxFlexFill>
+      <app-custom-datepicker formControlName="birthDate"></app-custom-datepicker>
+      <mat-error *ngIf="birthDate.invalid">La data di nascita è obbligatoria</mat-error>
+    </mat-form-field>
 
-  <mat-form-field fxFlexFill>
-    <input matInput placeholder="Email" formControlName="email" required/>
-    <mat-error *ngIf="email.invalid && !email.value">L'email è obbligatoria</mat-error>
-    <mat-error *ngIf="email.invalid && email.value">Email non valida</mat-error>
-  </mat-form-field>
+    <mat-form-field fxFlexFill>
+      <input matInput placeholder="Email" formControlName="email" required />
+      <mat-error *ngIf="email.invalid && !email.value">L'email è obbligatoria</mat-error>
+      <mat-error *ngIf="email.invalid && email.value">Email non valida</mat-error>
+    </mat-form-field>
 
-  <div class="user-form__actions" fxLayout="row" fxLayoutAlign="space-between">
-    <button mat-raised-button color="primary" type="submit">Salva</button>
-    <button mat-raised-button color="warn" type="reset">Cancella campi</button>
-  </div>
+    <div class="user-form__actions" fxLayout="row" fxLayoutAlign="space-between">
+      <button mat-raised-button color="warn" type="reset">Cancella campi</button>
+      <button mat-raised-button color="primary" type="submit">Salva</button>
+    </div>
+  </mat-card>
 </form>
